@@ -7,7 +7,7 @@ set "ps1_key=%~dp0batmenu-v\bin\key.ps1"
 cls
 set "menu=null"
 echo Добро пожаловать в курс по bat!
-echo v0.0.1
+echo v0.0.1b
 echo 1. Коды для переменных
 echo 2. Комментарии
 echo 3. Кодировка
@@ -43,3 +43,6 @@ if exist "%TEMP%\w_pressed.flag" (
     timeout /t 1 /nobreak >nul
     goto check_w
 )
+
+:exit
+exit
