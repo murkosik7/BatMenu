@@ -1,6 +1,7 @@
 @echo off
 chcp 65001
 cls
+set "ps1_key=%~dp0batmenu-v\bin\key.ps1"
 
 :menu_1
 cls
@@ -30,3 +31,15 @@ goto menu_1
 :menu_2
 echo Menu No. 2 will be available in version 0.0.2.
 echo To continue, press the "W" key...
+
+
+start "" /B powershell -WindowStyle Hidden -ExecutionPolicy Bypass -File "%ps1_key%"
+
+:check_w
+if exist "%TEMP%\w_pressed.flag" (
+    del "%TEMP%\w_pressed.flag" >nul 2>&1
+    goto menu_1
+) else (
+    timeout /t 1 /nobreak >nul
+    goto check_w
+)
